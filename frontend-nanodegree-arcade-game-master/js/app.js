@@ -6,7 +6,7 @@ var Enemy = function(x, y, speed) {
     
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = Math.floor(Math.random() * 80 + 0.5);;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
