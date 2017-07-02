@@ -101,6 +101,7 @@ var allEnemies = [
     new Enemy(0, 140, 250),
     new Enemy(0, 225, 100),
     ];
+
 // Place the player object in a variable called player
 
 if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
