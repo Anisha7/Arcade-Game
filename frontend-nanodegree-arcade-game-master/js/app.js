@@ -33,37 +33,39 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 // This class requires an update(), render() and
-// a handleInput() method.
-var player = function() {
-    this.x = x;
-    this.y = y;
+// a handleInput() method.
+var Player = function() {
+    this.x = 200;
+    this.y = 400;
     this.sprite = 'images/char-boy.png';
 };
 
-player.prototype.update = function(dt) {
+
+
+Player.prototype.update = function(dt) {
         //resets player to start position when in water
-    if(this.y < 80){
-                PlayerReset(252, 124);
-            }
-    //prevent player from going off the screen
-    if(this.y > 600){
-                PlayerReset(this.x, 124);
-            }
-    if(this.x < 50){
-                PlayerReset(50, this.y);
-            }
-    if(this.x > 455){
-                PlayerReset(455, this.y);
-            }
-    this.checkCollisions();  // This will call the positiionReset()
+    // if(this.y < 80){
+    //             PlayerReset(252, 124);
+    //         }
+    // //prevent player from going off the screen
+    // if(this.y > 600){
+    //             PlayerReset(this.x, 124);
+    //         }
+    // if(this.x < 50){
+    //             PlayerReset(50, this.y);
+    //         }
+    // if(this.x > 455){
+    //             PlayerReset(455, this.y);
+    //         }
+    // this.checkCollisions();  // This will call the positiionReset()
 }
 
-player.prototype.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-player.prototype.handleInput= function(keyup) {
-    //make player move with key input
+Player.prototype.handleInput= function(keyup) {
+    //make Player move with key input
     switch(keyup){
         case 'left' :
             this.x - 83;
@@ -75,21 +77,25 @@ player.prototype.handleInput= function(keyup) {
             this.y + 101;
             break;
         case 'down' :
-            this.y = 101;
+            this.y - 101;
             break;
     }
 
 }
 //Collision functions to reset player position
-player.prototype.checkCollisions = function(){
-  for (var i = 0; i < allEnemies.length; i++){
-     if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
-       this.positionReset();
-     }
-  }
+Player.prototype.checkCollisions = function(){
+//   for (var i = 0; i < allEnemies.length; i++){
+//      if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
+//        this.positionReset();
+//      }
+//      if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
+//     this.positionReset();
+//     }
+//   }
+
 };
 
-player.prototype.positionReset = function(){
+Player.prototype.positionReset = function(){
   this.x = 252;
   this.y = 124;
 };
@@ -103,10 +109,7 @@ var allEnemies = [
     ];
 
 // Place the player object in a variable called player
-
-if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
-    this.positionReset();
-}
+var player = new Player(200,400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
