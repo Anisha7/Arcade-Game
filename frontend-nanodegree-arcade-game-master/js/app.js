@@ -44,20 +44,20 @@ var Player = function() {
 
 Player.prototype.update = function(dt) {
         //resets player to start position when in water
-    // if(this.y < 80){
-    //             PlayerReset(252, 124);
-    //         }
-    // //prevent player from going off the screen
-    // if(this.y > 600){
-    //             PlayerReset(this.x, 124);
-    //         }
-    // if(this.x < 50){
-    //             PlayerReset(50, this.y);
-    //         }
-    // if(this.x > 455){
-    //             PlayerReset(455, this.y);
-    //         }
-    // this.checkCollisions();  // This will call the positiionReset()
+    if(this.y < 80){
+                PlayerReset(252, 124);
+            }
+    //prevent player from going off the screen
+    if(this.y > 600){
+                PlayerReset(this.x, 124);
+            }
+    if(this.x < 50){
+                PlayerReset(50, this.y);
+            }
+    if(this.x > 455){
+                PlayerReset(455, this.y);
+            }
+    this.checkCollisions();  // This will call the positiionReset()
 }
 
 Player.prototype.render = function() {
@@ -81,17 +81,17 @@ Player.prototype.handleInput= function(keyup) {
             break;
     }
 
-}
+};
 //Collision functions to reset player position
 Player.prototype.checkCollisions = function(){
-//   for (var i = 0; i < allEnemies.length; i++){
-//      if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
-//        this.positionReset();
-//      }
-//      if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
-//     this.positionReset();
-//     }
-//   }
+  for (var i = 0; i < allEnemies.length; i++){
+     if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
+       this.positionReset();
+     }
+     if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
+    this.positionReset();
+    }
+  }
 
 };
 
