@@ -45,17 +45,22 @@ var Player = function() {
 Player.prototype.update = function(dt) {
         //resets player to start position when in water
     if(this.y < 80){
-                PlayerReset(252, 124);
+        this.x = 252;
+        this.y = 124;
+//PlayerReset(252, 124);
             }
     //prevent player from going off the screen
     if(this.y > 600){
-                PlayerReset(this.x, 124);
+        this.y = 124;
+               // PlayerReset(this.x, 124);
             }
     if(this.x < 50){
-                PlayerReset(50, this.y);
+        this.x = 50;
+               // PlayerReset(50, this.y);
             }
     if(this.x > 455){
-                PlayerReset(455, this.y);
+        this.x= 455;
+                //PlayerReset(455, this.y);
             }
     this.checkCollisions();  // This will call the positiionReset()
 }
@@ -68,16 +73,16 @@ Player.prototype.handleInput= function(keyup) {
     //make Player move with key input
     switch(keyup){
         case 'left' :
-            this.x - 83;
+            this.x = this.x - 83;
             break;
         case 'right' :
-            this.x + 83;
-            break;
-        case 'up' :
-            this.y + 101;
+            this.x = this.x + 83;
             break;
         case 'down' :
-            this.y - 101;
+            this.y = this.y + 101;
+            break;
+        case 'up' :
+            this.y = this.y - 101;
             break;
     }
 
@@ -98,8 +103,7 @@ Player.prototype.checkCollisions = function(){
 Player.prototype.positionReset = function(){
   this.x = 252;
   this.y = 124;
-};
-
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [
