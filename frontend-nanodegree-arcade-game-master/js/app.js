@@ -63,6 +63,7 @@ Player.prototype.update = function(dt) {
                 //PlayerReset(455, this.y);
             }
      // This will call the positiionReset()
+     
 }
 
 Player.prototype.render = function() {
@@ -96,6 +97,7 @@ Player.prototype.checkCollisions = function(){
      if ((this.x - allEnemies[i].x) < 50 && (this.y - allEnemies[i].y) < 50){
     this.positionReset();
     }
+    console.log("checkCollisions invoked!");
   }
 
 };
