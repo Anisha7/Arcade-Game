@@ -26,6 +26,8 @@ Enemy.prototype.update = function(dt) {
     if(this.x>505) {
         this.x = 0;
     }
+
+    this.checkCollision();
 };
 
 // Draw the enemy on the screen, required method for game
@@ -194,6 +196,7 @@ Enemy.prototype.collisionDetected = function() {
 
 Player.prototype.update = function() {
     if (this.y < 0) {
+        alert("You WIN! Game will now restart");
         this.reset();
     };
 
@@ -208,7 +211,7 @@ Player.prototype.update = function() {
     if (this.x>500){
         this.x=500;
     };
-    // this.checkCollisions();
+    
 };
 InteractiveItem.prototype.overlapsWith = function(other) {
     return (
