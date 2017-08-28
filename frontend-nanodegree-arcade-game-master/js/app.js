@@ -1,3 +1,4 @@
+'use strict';
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -72,30 +73,6 @@ var Player = function() {
 };
 
 
-
-Player.prototype.update = function(dt) {
-        //resets player to start position when in water
-//     if(this.y < 80){
-//         this.x = 252;
-//         this.y = 124;
-// //PlayerReset(252, 124);
-//             }
-//     //prevent player from going off the screen
-//     if(this.y > 600){
-//         this.y = 124;
-//                // PlayerReset(this.x, 124);
-//             }
-    if(this.x < 50){
-        this.x = 50;
-               // PlayerReset(50, this.y);
-            }
-    if(this.x > 500){
-        this.x= 455;
-                //PlayerReset(455, this.y);
-            }
-     // This will call the positiionReset()
-    this.checkCollisions();   
-}
 
 //new code
 function InteractiveItem(id, width, visibleWidth, startingXPosition, startingYPosition, sprite) {
@@ -208,21 +185,11 @@ Player.prototype.update = function() {
        this.reset();
     };
 
-    if (this.x>500){
-        this.x=500;
+    if (this.x>400){
+        this.x=400;
     };
     
 };
-InteractiveItem.prototype.overlapsWith = function(other) {
-    return (
-        (other instanceof InteractiveItem) &&
-        (this.row == other.row) &&
-        (this.leftX() < other.rightX()) &&
-        (this.rightX() > other.leftX())
-    );
-};
-
-
 
 Player.prototype.reset = function() {
     this.x = this.INIT_X;
